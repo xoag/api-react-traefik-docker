@@ -1,0 +1,21 @@
+# Docker Compose override for debugging
+version: '3.8'
+
+services:
+  api:
+    build:
+      target: base
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+    ports:
+      - "5000:5000"  # Direct access for debugging
+    command: ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:5000"]
+
+  frontend:
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"  # Direct access for debugging
+    stdin_open: true
+    tty: true

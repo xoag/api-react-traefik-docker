@@ -1,0 +1,20 @@
+# Traefik static configuration
+[global]
+  checkNewVersion = true
+  sendAnonymousUsage = false
+
+[log]
+  level = "DEBUG"
+
+[api]
+  dashboard = true
+  insecure = true
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+
+[providers]
+  [providers.docker]
+    exposedByDefault = false
+    network = "traefik-network"

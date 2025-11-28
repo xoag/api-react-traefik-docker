@@ -1,0 +1,7 @@
+# Git ignore
+.env.local
+*.log
+.DS_Store
+
+# Docker
+docker-compose.override.yml
