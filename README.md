@@ -38,6 +38,54 @@ networks:
 
 ## 🚀 Inicio Rápido
 
+### Opción 1: Desarrollo Local (Sin Docker) - Más Rápido ⚡
+
+**Requisitos previos:**
+- .NET 8 SDK instalado
+- Node.js 20+ instalado
+
+**Inicio automático (PowerShell):**
+```powershell
+.\start-local.ps1
+```
+
+Esto abrirá dos ventanas de PowerShell, una para la API y otra para el frontend.
+
+**Inicio manual:**
+
+Terminal 1 - API:
+```powershell
+cd api
+dotnet run
+```
+
+Terminal 2 - Frontend:
+```powershell
+cd frontend
+npm install  # Solo la primera vez
+npm run dev
+```
+
+**URLs de desarrollo local:**
+- Frontend: http://localhost:5173
+- API: http://localhost:5000/api/products
+- Swagger: http://localhost:5000/swagger
+
+**Detener servicios:**
+```powershell
+.\stop-local.ps1
+```
+
+O simplemente cierra las ventanas de PowerShell.
+
+---
+
+### Opción 2: Con Docker + Traefik
+
+**Requisitos previos:**
+- Docker Desktop instalado
+- Traefik corriendo en la red `traefik_default`
+
 ### Modo Producción
 
 ```powershell
@@ -57,11 +105,14 @@ docker-compose -f docker-compose.yml -f docker-compose.debug.yml up --build
 
 ## 🌐 Acceso a los Servicios
 
-Una vez que los contenedores estén corriendo:
+### Desarrollo Local (sin Docker):
+- **Frontend**: http://localhost:5173
+- **API**: http://localhost:5000/api/products
+- **Swagger**: http://localhost:5000/swagger
 
-- **Frontend**: http://localhost
-- **API**: http://localhost/api
-- **Swagger API**: http://localhost/api/swagger
+### Con Docker + Traefik:
+- **Frontend**: http://test-frontend.localhost
+- **API**: http://test-api.localhost/api/products
 - **Traefik Dashboard**: Según tu configuración existente de Traefik
 
 ## 📁 Estructura del Proyecto

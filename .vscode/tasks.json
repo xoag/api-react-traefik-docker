@@ -1,0 +1,92 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build"],
+      "options": {
+        "cwd": "${workspaceFolder}/api"
+      },
+      "problemMatcher": "$msCompile",
+      "group": "build"
+    },
+    {
+      "label": "Run API (.NET)",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["run"],
+      "options": {
+        "cwd": "${workspaceFolder}/api"
+      },
+      "problemMatcher": "$msCompile",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-servers"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Run Frontend (Vite)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": [],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-servers"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Run All (API + Frontend)",
+      "dependsOn": ["Run API (.NET)", "Run Frontend (Vite)"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Docker: Up",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up", "-d"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Docker: Down",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["down"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Docker: Rebuild",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up", "-d", "--build"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "none"
+    }
+  ]
+}

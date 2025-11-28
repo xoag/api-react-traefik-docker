@@ -5,3 +5,8 @@
 
 # Docker
 docker-compose.override.yml
+
+# VS Code
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
